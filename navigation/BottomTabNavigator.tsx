@@ -5,11 +5,9 @@ import * as React from "react";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
-import HomeScreen from "../screens/HomeScreen";
-import HistoriaScreen from "../screens/HistoriaScreen";
-import CardapioScreen from "../screens/CardapioScreen";
-import ContatoScreen from "../screens/ContatoScreen";
-import LocalizacaoScreen from "../screens/LocalizacaoScreen";
+import PessoaisScreen from "../screens/PessoaisScreen";
+import FormacaoScreen from "../screens/FormacaoScreen";
+import ObjetivoScreen from "../screens/ObjetivoScreen";
 
 const BottomTab = createBottomTabNavigator();
 export default function BottomTabNavigator() {
@@ -17,47 +15,33 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Pessoais"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
     >
       <BottomTab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
-        }}
-      />
-      <BottomTab.Screen
-        name="História"
-        component={Historia}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
-        }}
-      />
-      <BottomTab.Screen
-        name="Cardápio"
-        component={Cardapio}
+        name="Dados Pessoais"
+        component={Pessoais}
         options={{
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="book-open" color={color} />
+            <TabBarIcon name="user-tie" color={color} />
           ),
         }}
       />
       <BottomTab.Screen
-        name="Contato"
-        component={Contato}
+        name="Formação"
+        component={Formacao}
         options={{
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="wpforms" color={color} />
+            <TabBarIcon name="pencil-alt" color={color} />
           ),
         }}
       />
       <BottomTab.Screen
-        name="Localização"
-        component={Localizacao}
+        name="Objetivo"
+        component={Objetivo}
         options={{
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="map-marker-alt" color={color} />
+            <TabBarIcon name="info-circle" color={color} />
           ),
         }}
       />
@@ -73,67 +57,41 @@ function TabBarIcon(props: { name: string; color: string }) {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const HomeStack = createStackNavigator();
-function Home() {
+const PessoaisStack = createStackNavigator();
+function Pessoais() {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={{ headerTitle: "Home" }}
+    <PessoaisStack.Navigator>
+      <PessoaisStack.Screen
+        name="PessoaisScreen"
+        component={PessoaisScreen}
+        options={{ headerTitle: "Dados Pessoais" }}
       />
-    </HomeStack.Navigator>
+    </PessoaisStack.Navigator>
   );
 }
 
-const HistoriaStack = createStackNavigator();
-function Historia() {
+const FormacaoStack = createStackNavigator();
+function Formacao() {
   return (
-    <HistoriaStack.Navigator>
-      <HistoriaStack.Screen
-        name="HistoriaScreen"
-        component={HistoriaScreen}
-        options={{ headerTitle: "Nossa História" }}
+    <FormacaoStack.Navigator>
+      <FormacaoStack.Screen
+        name="FormacaoScreen"
+        component={FormacaoScreen}
+        options={{ headerTitle: "Minha Formação" }}
       />
-    </HistoriaStack.Navigator>
+    </FormacaoStack.Navigator>
   );
 }
 
-const CardapioStack = createStackNavigator();
-function Cardapio() {
+const ObjetivoStack = createStackNavigator();
+function Objetivo() {
   return (
-    <CardapioStack.Navigator>
-      <CardapioStack.Screen
-        name="CardapioScreen"
-        component={CardapioScreen}
-        options={{ headerTitle: "O que temos" }}
-      />
-    </CardapioStack.Navigator>
-  );
-}
-
-const ContatoStack = createStackNavigator();
-function Contato() {
-  return (
-    <ContatoStack.Navigator>
-      <ContatoStack.Screen
+    <ObjetivoStack.Navigator>
+      <ObjetivoStack.Screen
         name="ContatoScreen"
-        component={ContatoScreen}
-        options={{ headerTitle: "Contato" }}
+        component={ObjetivoScreen}
+        options={{ headerTitle: "Objetivo e Interesses" }}
       />
-    </ContatoStack.Navigator>
-  );
-}
-
-const LocalizacaoStack = createStackNavigator();
-function Localizacao() {
-  return (
-    <LocalizacaoStack.Navigator>
-      <LocalizacaoStack.Screen
-        name="LocalizacaoScreen"
-        component={LocalizacaoScreen}
-        options={{ headerTitle: "Localização" }}
-      />
-    </LocalizacaoStack.Navigator>
+    </ObjetivoStack.Navigator>
   );
 }
